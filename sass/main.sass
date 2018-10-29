@@ -7,11 +7,11 @@ $linkblue: #0066cc
 $dkblue: #41A8DF
 $dkerblue: #298EC3
 $lightyellow: #fffb67
-$headers: #4D6774
+$headers: #282828
 // links
-$links: #774D55
+$links: #3c3836
 // link hover
-$link-hover: #4D6774
+$link-hover: #282828
 // outlines around navigation buttons
 $gray: #ccc 
 // matte background
@@ -21,15 +21,25 @@ $default-box-shadow: 0 0 0 1px #d1d1d1,0 0 4px 1px #ccc
 // text color for hover over nav buttons
 $nav-hover: white
 // background for article text
-$article-bg: lighten(#E0F9D4, 50)
-$width: 65%
+//$article-bg: lighten(#E0F9D4, 50)
+$article-bg: #f9f5d7
+$bg-color: #fbf1c7
+$nav-color: #076678
+$width: 100%
 $width-mobile: 95%
 
 @import "neat/neat"
 @import "base/base"
 
+$media-medium-max: ( columns: 12, gutter: 20px, media: 'only screen and (max-width: 719px)' )
+
+$media-large-min: ( columns: 12, gutter: 40px, media: 720px )
+
+html
+  background-color: $bg-color
+
 h1, h2, h3, h4, h5, h6
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+  //font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   line-height: 1.25
   margin: 0
   text-rendering: optimizeLegibility
@@ -53,6 +63,7 @@ h5
 h2.archive-entry-title
   a
     font-size: 1.2em
+    color: $links
 body
   -webkit-font-smoothing: antialiased
   color: #333333
@@ -63,26 +74,48 @@ h2
   color: $headers
 
 a            
-  color: $links
+  //color: $links
   text-decoration: none
 
 a:hover      
   color: $link-hover
 
 
+    
+
+p.paginator
+  margin: 0.75em 0 0.75em
+  float: right
+  a.button
+    padding: 5px 2em 5px 2em
+    border-radius: 8px
+  a:hover 
+    background-color: $link-hover
+    color: $nav-hover
+
+p
+  font-family: Inconsolata, serif
+
 ol
   margin: 0px
   padding: 0px
+  font-family: Inconsolata, serif
   ul.posts, li.posts
     list-style-type: none
+    padding: 30px
+    box-shadow: $default-box-shadow
+    background-color: $article-bg
   ul, li
     list-style-type: disc
 
 .wrapper
-  @include outer-container
+  @include grid-container
+  margin-left: auto
+  margin-right: auto
+  max-width: 68em
 
 body
-  background-color: white
+  background-color: $bg-color
 
   // **************************   START HEADER
   header.banner
@@ -95,10 +128,16 @@ body
     text-align: center
     padding: 10px 0px 10px 0px
     img
-      box-sizing: border-box
-      width: 150px
-      border: 8px inset $headers
-      border-radius: 75px
+      //box-sizing: border-box
+      height: 150px
+      border: 0.25rem solid
+      //border: 8px inset $headers
+      border-radius: 50%
+    div.name-wrapper
+      padding-top: 5px
+      h2
+        font-family: Inconsolata, serif
+        font-size: 2em
 
     div.canvas-wrapper
       padding-top: 15px
@@ -108,28 +147,6 @@ body
         z-index: 300
         margin: 0
         padding: 0
-
-    // ** start social
-    div.social-navigation
-
-      padding-top: 0
-      text-align: center
-      ul
-        -webkit-margin-before: 0px
-        -webkit-margin-after: 0px
-        -webkit-margin-start: 0px
-        -webkit-margin-end: 0px
-        -webkit-padding-start: 0px
-        display: inline
-        a
-
-          @media all and (min-device-width: 900px)
-            font-size: 2em
-          @media all and (max-device-width: 900px)
-            font-size: 2em
-
-        li
-          display: inline-block
 
 
     // ** start nav links 
@@ -145,32 +162,39 @@ body
         background-color: $link-hover
         color: $nav-hover
       a
+        //border: 0.125em solid
         padding: 5px 10px 5px 10px
-        border-radius: 2px
+        border-radius: 8px
         text-decoration: none
         @media all and (min-device-width: 900px)
-          font-size: 2em
+          font-size: 1.25em
         @media all and (max-device-width: 900px)
-          font-size: 1.5em
-        font-family: $helvetica
-        color: $links
+          font-size: 1em
+        font-family: Inconsolata, serif
+        color: $nav-color
         display: inline-block
-        border: 1px solid $gray
+        //border: 1px solid $gray
   // ******************************** END HEADER
+  div.social-navigation
+      a
+        color: $links
+        font-size: 1em
 
-
+  footer.post-info
+    font-style: italic
+    
   div.entry-content 
-    box-shadow: $default-box-shadow 
+    //box-shadow: $default-box-shadow 
     color: #292f33
-    margin-bottom: 2em
+    //margin-bottom: 2em
     margin-top: 1em
-    background-color: white
-    font-family: $helvetica
-    padding: 1em
-    border-radius: 10px
-    @include media(max-width $medium) 
-      border-radius: 0px
-      padding: .5em
+    //background-color: white
+    font-family: $font-stack-helvetica
+    //padding: 1em
+    //border-radius: 10px
+    //@include grid-media($media-medium-max)
+    //  border-radius: 0px
+    //  padding: .5em
     
     a:link, a:visited 
       color: $linkblue
@@ -182,7 +206,7 @@ body
       padding: .5em
       margin: auto
       width: 90%
-      @include media(max-width $medium) 
+      @include grid-media($media-medium-max)
         width: 100%
       
       font-size: 1em
@@ -200,7 +224,7 @@ body
 
   div.archives-wrapper
     table.archives
-      font-family: $helvetica
+      font-family: $font-stack-helvetica
       font-size: .8em
       width: 100%
       td
@@ -221,3 +245,23 @@ body
     width: 100% 
     margin-top: 20px
     margin-bottom: 20px
+  
+    div.social-navigation
+      padding-top: 0
+      text-align: center
+      ul
+        -webkit-margin-before: 0px
+        -webkit-margin-after: 0px
+        -webkit-margin-start: 0px
+        -webkit-margin-end: 0px
+        -webkit-padding-start: 0px
+        display: inline
+        a
+
+          @media all and (min-device-width: 900px)
+            font-size: 2em
+          @media all and (max-device-width: 900px)
+            font-size: 2em
+
+        li
+          display: inline-block

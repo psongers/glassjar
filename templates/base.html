@@ -7,10 +7,10 @@
     <!-- <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=0, maximum-scale=1, user-scalable=yes"> -->
     <meta name="viewport" content="width=device-width">
     <!-- CSS -->
-    <link rel="stylesheet" href="/theme/css/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet"> 
+    <link rel="stylesheet" href="/theme/css/normalize.css">
     <link rel="stylesheet" href="/theme/css/{{ CSS_FILE }}" type="text/css" />
-    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     {% if FEED_RSS %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
     {% endif %}
@@ -33,7 +33,7 @@
     <div class="wrapper">
     <header class="banner">
       <div class="img-wrapper"><img src="/profile.jpg" alt="profile.pic"/></div>
-      {% include 'social_navigation.html' %}
+      <div class="name-wrapper"><h2>{{ SITENAME }}</h2></div>
       <div class="canvas-wrapper"><canvas id="canvas"></canvas></div>
       <div class="navigation">
         {% for title, link in MENUITEMS %}
@@ -47,6 +47,7 @@
 
     <footer id="page-footer">
       <div>
+        
         {% for name, link in SOCIAL %}
         <a href="{{ link }}"><i class="icon-{{ name }}"></i>  </a>
         {% endfor %}
@@ -54,14 +55,14 @@
         <a href="mailto:{{ EMAIL }}"><i class="icon-envelope"></i> </a>
         {% endif %}
       </div>
+      {% include 'social_navigation.html' %}
       <div>
-        powered by <a href="http://getpelican.com/">pelican</a> with the <a href="https://github.com/jarv/jarvican">jarvican</a> theme.
+        powered by <a href="http://getpelican.com/">pelican</a> with the <a href="https://github.com/jarv/jarvican">glassjar</a> theme.
       </div>
       <div>The posts on this page represent my views and opinions do not represent those of my employer.</div>
     </footer><!-- /#contentinfo -->
     </div>
     <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="/theme/js/vendor/jquery-1.11.0.min.js"></script>
-    <script src="/theme/js/jarvican.js"></script>
   </body>
 </html>
